@@ -1,0 +1,31 @@
+# -*- coding: utf-8 -*-
+# 需要: Python 3.8+ 和 pandas
+# 功能: 遍历 n,l∈[1,50]，筛选满足
+#   n > 5
+#   n - l >= 2^l
+# 的 (n,l)，并输出五元组
+#   (n, n-2, n-l-2, 2^(n-1) - 2^(n-l-1), l+1)
+
+import pandas as pd
+
+rows = []
+for n in range(1, 51):
+    for l in range(1, 51):
+        if n > 5 and (n - l) >= (1 << l):
+            rows.append({
+                "n": n,
+                "n-2": n - 2,
+                "n-l-2": n - l - 2,
+                "2^(n-1)-2^(n-l-1)": (1 << (n - 1)) - (1 << (n - l - 1)),
+                "l+1": l + 1
+            })
+
+df = pd.DataFrame(rows).sort_values(["n", "l+1"]).reset_index(drop=True)
+
+# 导出 CSV
+csv_path = "derived_tuples_n_n2_nl2_pow_expr_lp1_1to50.csv"
+df.to_csv(csv_path, index=False)
+
+print(f"总记录数: {len(df)}")
+print(f"已保存: {csv_path}")
+print(df.head(10))
