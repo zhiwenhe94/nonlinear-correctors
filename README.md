@@ -1,6 +1,6 @@
 # README
 
-This folder contains the Python scripts used to compute solutions of Eq. (33) and to verify the correction orders and nonlinearities of the examples appearing in the paper.
+This folder contains the Python scripts used to compute solutions of Eq. (33), verify the correction orders and nonlinearities of the examples presented in the paper, and validate the derivations of several coefficients used in the theoretical analysis.
 
 ## File descriptions
 
